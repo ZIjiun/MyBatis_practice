@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!--
+        CONSOLE ：表示當前的日誌訊息是可以輸出到控制台的。
+    -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%level] %blue(%d{HH:mm:ss.SSS}) %cyan([%thread]) %boldGreen(%logger{15}) - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.itheima" level="DEBUG" additivity="false">
+        <appender-ref ref="Console"/>
+    </logger>
+
+
+    <!--
+      level:用來設置印出級別，大小寫無關：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF
+     ， 預設debug
+      <root>可以包含零個或多個<appender-ref>元素，標識這個輸出位置將會被本日誌級別控制。
+      -->
+    <root level="DEBUG">
+        <appender-ref ref="Console"/>
+    </root>
+</configuration>
