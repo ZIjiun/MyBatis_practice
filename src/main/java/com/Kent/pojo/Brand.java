@@ -1,10 +1,13 @@
 package com.Kent.pojo;
 
+import org.apache.ibatis.type.Alias;
+
 /**
  * 品牌
  * 在實體類中，基本數據類型建議使用對應的包裝類型
  */
 
+@Alias("brand")
 public class Brand {
     // id 主键
     private Integer id;
@@ -28,19 +31,19 @@ public class Brand {
         this.id = id;
     }
 
-    public String getBrandName() {
+    public String getbrandName() {
         return brandName;
     }
 
-    public void setBrandName(String brandName) {
+    public void setbrandName(String brandName) {
         this.brandName = brandName;
     }
 
-    public String getCompanyName() {
+    public String getcompanyName() {
         return companyName;
     }
 
-    public void setCompanyName(String companyName) {
+    public void setcompanyName(String companyName) {
         this.companyName = companyName;
     }
 
