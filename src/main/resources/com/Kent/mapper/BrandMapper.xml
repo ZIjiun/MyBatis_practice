@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace: 名稱空間
+-->
+
+<mapper namespace="com.Kent.mapper.BrandMapper">
+
+    <!--
+        資料庫的字段名稱 和 實體類的屬性名稱 不一樣，不能自動封裝資料
+            * 取別名: 對不一樣的列名取別名，讓別名和實體類的屬性名一樣
+                * 缺點: 每次查詢都要定義一次別名
+                    * 可以使用 sql 片段方式解決
+                        * 缺點: 不靈活
+            * resultMap:
+                1. 定義 <resultMap>標籤
+                2. 在<select>標籤中，使用 resultMap 屬性替換 resultType 的屬性
+    -->
+
+    <!--
+        id: 唯一識別
+        type: 映射的類型，支持別名
+    -->
+    <select id="selectAll" resultMap="brandResultMap">
+        select *
+        from tb_brand;
+    </select>
+
+    <!--
+        id: 完成主鍵字段的映射
+            column: 表的類名
+            property: 實體類的屬性名
+        result: 完成一般字段的映射
+            column: 表的類名
+            property: 實體類的屬性名
+    -->
+    <resultMap id="brandResultMap" type="brand">
+        <result column="brand_name" property="brandName"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+    
+    <!--
+        sql 片段
+    -->
+<!--    <sql id="brand_column">-->
+<!--        id, brand_name as brandName, company_name as companyName, ordered, description, status-->
+<!--    </sql>-->
+
+<!--    <select id="selectAll" resultType="brand">-->
+<!--        select-->
+<!--            <include refid="brand_column" />-->
+<!--        from tb_brand;-->
+
+<!--    </select>-->
+<!--    <select id="selectAll" resultType="brand">-->
+<!--        select *-->
+<!--        from tb_brand;-->
+<!--    </select>-->
+</mapper>
+
