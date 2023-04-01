@@ -15,8 +15,12 @@
             </dataSource>
         </environment>
     </environments>
-    <!--加載 sql 映射文件-->
     <mappers>
-        <mapper resource="UserMapper.xml"/>
+        <!--加載 sql 映射文件-->
+<!--        <mapper resource="com/Kent/mapper/UserMapper.xml"/>-->
+
+<!--        使用 Mapper 代理之後，編譯的 sql 映射文件會與 mapper interface 在相同的 package 下面，所以也可以寫 package 名稱去做加載-->
+<!--        之後其他的 mapper，也不用一個一個做加載了-->
+        <package name="com.Kent.mapper"/>
     </mappers>
 </configuration>

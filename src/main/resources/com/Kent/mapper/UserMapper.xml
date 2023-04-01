@@ -5,7 +5,7 @@
 <!--
     namespace: 名稱空間
 -->
-<mapper namespace="test">
+<mapper namespace="com.Kent.mapper.UserMapper">
     <select id="selectAll" resultType="com.Kent.pojo.User">
         select * from tb_user;
     </select>
