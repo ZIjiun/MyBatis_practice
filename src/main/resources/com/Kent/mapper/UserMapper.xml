@@ -5,8 +5,10 @@
 <!--
     namespace: 名稱空間
 -->
+
 <mapper namespace="com.Kent.mapper.UserMapper">
-    <select id="selectAll" resultType="com.Kent.pojo.User">
+    <!--因為已經有了別名 com.Kent.pojo.User 可以改為 user(不區分大小寫)-->
+    <select id="selectAll" resultType="user">
         select * from tb_user;
     </select>
 </mapper>

@@ -3,6 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <!--
+        類型別名可以為 Java 類型設置一個縮寫的名字，僅用於 XML 的設定，
+    -->
+    <!--
+    指定 package 取別名，MyBatis 會在 package 下面搜尋需要的 Java Bean
+    -->
+    <typeAliases>
+        <package name="com.Kent.pojo"/>
+    </typeAliases>
+
+    <!--
+    environments: 設定資料庫連接環境的訊息，可以設定多個 environment，透過 default 屬性切換不同的 environment
+    -->
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
