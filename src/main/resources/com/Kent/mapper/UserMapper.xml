@@ -7,8 +7,15 @@
 -->
 
 <mapper namespace="com.Kent.mapper.UserMapper">
+
     <!--因為已經有了別名 com.Kent.pojo.User 可以改為 user(不區分大小寫)-->
+    <!--statement-->
     <select id="selectAll" resultType="user">
         select * from tb_user;
+    </select>
+
+    <select id="selectById" resultType="user">
+        select *
+        from tb_user where id = #{id};
     </select>
 </mapper>

@@ -8,5 +8,7 @@ public interface UserMapper {
 
     // 返回類型是 List<User>
     List<User> selectAll();
+
+    User selectById(int id);
 }
 
