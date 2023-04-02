@@ -34,4 +34,28 @@ public class MyBatisTest {
         // 5. 釋放資源
         sqlSession.close();
     }
+
+    @Test
+    public void testSelectById() throws IOException {
+        // 接收參數
+        int id = 2;
+
+        // 1. 取得 SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 取得 sqlSessionFactory 物件
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 3. 取得 Mapper interface 的代理物件
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 執行方法
+        Brand brand = brandMapper.selectById(id);
+        System.out.println(brand);
+
+        // 5. 釋放資源
+        sqlSession.close();
+    }
 }

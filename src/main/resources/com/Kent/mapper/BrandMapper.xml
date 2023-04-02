@@ -58,5 +58,24 @@
 <!--        select *-->
 <!--        from tb_brand;-->
 <!--    </select>-->
-</mapper>
 
+    <!--
+        * 參數佔位符:
+            1. #{}: 會將其替換為 ?，為了防止 sql injection
+            2. ${}: 拚 sql，會存在 sql inject
+            3. 使用時機:
+                * 參數傳遞時: #{}
+                * 表名或者是列名不固定的狀況下: ${}，會在在 sql inject 的問題
+         * 參數類型: parameterType: 可以省略
+         * 特殊字符處理:
+            1. 轉義字符: > => &gt、< => &lt
+            2. CDATA
+    -->
+    <select id="selectById" parameterType="int" resultMap="brandResultMap">
+        select * from tb_brand where id
+        <![CDATA[
+            <
+        ]]>
+        #{id};
+    </select>
+</mapper>

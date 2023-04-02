@@ -11,6 +11,11 @@ public interface BrandMapper {
      * 查詢所有
      */
 
-    public List<Brand> selectAll();
+    List<Brand> selectAll();
+
+    /**
+     *  查看詳情，根據 Id 查詢
+     */
+    Brand selectById(int id);
 }
 
