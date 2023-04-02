@@ -154,4 +154,28 @@
         insert into tb_brand (brand_name, company_name, ordered, description, status)
         values (#{brandName}, #{companyName}, #{ordered}, #{description}, #{status})
     </insert>
+
+    <update id="update">
+        update tb_brand
+        <set>
+            <!--如果沒有對應的參數就不進行更新，否則資料庫的值會被更新成 null-->
+            <if test="brandName != null and brand != '' ">
+                brand_name = #{brandName},
+            </if>
+            <if test="companyName != null and companyName != '' ">
+                company_name = #{companyName},
+            </if>
+            <if test="ordered != null">
+                ordered = #{ordered},
+            </if>
+            <if test="description != null and description != '' ">
+                description = #{description},
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
 </mapper>
