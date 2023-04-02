@@ -7,7 +7,6 @@
 -->
 
 <mapper namespace="com.Kent.mapper.BrandMapper">
-
     <!--
         資料庫的字段名稱 和 實體類的屬性名稱 不一樣，不能自動封裝資料
             * 取別名: 對不一樣的列名取別名，讓別名和實體類的屬性名一樣
@@ -151,4 +150,8 @@
         </where>
     </select>
 
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_brand (brand_name, company_name, ordered, description, status)
+        values (#{brandName}, #{companyName}, #{ordered}, #{description}, #{status})
+    </insert>
 </mapper>

@@ -140,4 +140,50 @@ public class MyBatisTest {
         // 5. 釋放資源
         sqlSession.close();
     }
+
+    @Test
+    public void testAdd() throws IOException {
+        // 接收參數
+        int status = 1;
+        String companyName = "波導手機";
+        String brandName = "波導";
+        String description = "手機中的戰鬥機";
+        int ordered = 1;
+
+        // 封裝成物件
+        Brand brand = new Brand();
+        brand.setStatus(status);
+        brand.setcompanyName(companyName);
+        brand.setbrandName(brandName);
+        brand.setDescription(description);
+        brand.setOrdered(ordered);
+
+        // 1. 取得 SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 取得 sqlSessionFactory 物件
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // true: 自動提交交易，false: 手動提交交易
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+
+        // 3. 取得 Mapper interface 的代理物件
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 執行方法
+        brandMapper.add(brand);
+
+        // 取得增加的資料的 id
+        Integer id = brand.getId();
+        System.out.println(id);
+
+        // 提交 transaction
+//        sqlSession.commit();
+
+        // 5. 釋放資源
+        sqlSession.close();
+    }
 }

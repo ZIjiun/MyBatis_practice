@@ -41,5 +41,10 @@ public interface BrandMapper {
      * @return
      */
     List<Brand> selectByConditionSingle(Brand brand);
+
+    /**
+     * 插入
+     */
+    void add(Brand brand);
 }
 
