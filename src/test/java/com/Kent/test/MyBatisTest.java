@@ -231,4 +231,56 @@ public class MyBatisTest {
         // 5. 釋放資源
         sqlSession.close();
     }
+
+    @Test
+    public void testDelete() throws IOException {
+        // 接收參數
+        int id = 6;
+
+        // 1. 取得 SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 取得 sqlSessionFactory 物件
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 3. 取得 Mapper interface 的代理物件
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 執行方法
+        brandMapper.delById(id);
+
+        // 提交 transaction
+        sqlSession.commit();
+
+        // 5. 釋放資源
+        sqlSession.close();
+    }
+
+    @Test
+    public void testDeleteByIds() throws IOException {
+        // 接收參數
+        int ids[] = {1, 2, 3};
+
+        // 1. 取得 SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 取得 sqlSessionFactory 物件
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 3. 取得 Mapper interface 的代理物件
+        BrandMapper brandMapper = sqlSession.getMapper(BrandMapper.class);
+
+        // 4. 執行方法
+        brandMapper.deleteByIds(ids);
+
+        // 提交 transaction
+        sqlSession.commit();
+
+        // 5. 釋放資源
+        sqlSession.close();
+    }
 }

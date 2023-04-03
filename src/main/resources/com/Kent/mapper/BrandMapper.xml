@@ -178,4 +178,20 @@
         where id = #{id}
     </update>
 
+    <delete id="delById">
+        delete from tb_brand where id = #{id}
+    </delete>
+
+    <!--myBatis 會將陣列參數，封裝為一個 Map 集合
+        * 預設: key 名稱 = array ， value = 陣列
+        * 使用 @Param 註解改變 Map 集合的預設 Key 的名稱
+    -->
+
+    <delete id="deleteByIds">
+        delete from tb_brand where id
+        in
+            <foreach collection="ids" item = "id" separator="," open="(" close=");">
+                #{id}
+            </foreach>
+    </delete>
 </mapper>
