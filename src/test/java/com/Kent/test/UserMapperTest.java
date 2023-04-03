@@ -45,4 +45,25 @@ public class UserMapperTest {
         // 5. 釋放資源
         sqlSession.close();
     }
+
+    @Test
+    public void testSelectById() throws IOException {
+        // 1. 取得 SqlSessionFactory
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+
+        // 2. 取得 sqlSessionFactory 物件
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        // 3. 取得 Mapper interface 的代理物件
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+        // 4. 執行方法
+        User user = userMapper.selectById(1);
+        System.out.println(user);
+
+        // 5. 釋放資源
+        sqlSession.close();
+    }
 }

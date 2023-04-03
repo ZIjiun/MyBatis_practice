@@ -2,6 +2,7 @@ package com.Kent.mapper;
 
 import com.Kent.pojo.User;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.Collection;
 import java.util.List;
@@ -11,6 +12,7 @@ public interface UserMapper {
     // 返回類型是 List<User>
     List<User> selectAll();
 
+    @Select("select * from tb_user where id = #{id}")
     User selectById(int id);
 
     /**

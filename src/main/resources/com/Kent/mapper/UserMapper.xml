@@ -14,10 +14,11 @@
         select * from tb_user;
     </select>
 
-    <select id="selectById" resultType="user">
-        select *
-        from tb_user where id = #{id};
-    </select>
+        <!--改為使用在 UserMapper.java 中使用註解的方式寫 sql-->
+<!--    <select id="selectById" resultType="user">-->
+<!--        select *-->
+<!--        from tb_user where id = #{id};-->
+<!--    </select>-->
 
     <select id="select" resultType="user">
         select *
